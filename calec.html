@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>calculator</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+      
+      margin-top: 7%;
+      margin-left: 30%;
+    }
+    .container{
+      padding: 10px;
+      width: 370px;
+      height: auto;
+      background: rgb(51, 8, 100);
+      overflow: hidden;
+      align-self: center;
+      border-radius: 16px;
+      box-shadow: 0, 3px black;
+    }
+    .buttons{
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      
+    }
+    .buttons *:hover{
+      background: rgb(97, 48, 153);
+      color: #fff;
+    }
+    .buttons * {
+      height: 80px;
+      box-shadow: inset 1px 0 2pc rgb(59, 59, 59);
+      font-size: 22px;
+      font-family: 'Engravers MT';
+      border-radius: 8px;
+    }
+    #display{
+      background: rgb(247, 241, 241);
+      width: 85%;
+      height: 50px;
+      margin: 20px 10px;
+      padding: 10px;
+      color: rgb(0, 0, 0);
+      font-family: 'Berlin Sans FB Demi';  
+      font-size: 40px;  
+      font-weight: bold; 
+    }
+    .col-2{
+     grid-column: span 2;
+     font-family: 'Elephant';
+    }
+    .col-2:hover{
+      background: #1B4242;
+      color: white;
+    }
+    .off_on button{
+      height: 40px;
+      font-size: 14px;
+      width: 100%;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input type="text" id="display" disabled>
+    <div class="buttons">
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button onclick="clearDisplay()" class="col-2">CE</button>
+      
+
+      
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button onclick="appendToDisplay('+')">+</button>
+      <button onclick="appendToDisplay('/')">/</button>
+      
+
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button onclick="appendToDisplay('*')">*</button>
+
+      <button onclick="appendToDisplay('-')">-</button>
+      <button onclick="calculate()"class="col-2">=</button>
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="deleteList()" style="font-family: 'Elephant';">DE</button>
+
+      <div class="off_on">
+         <button onclick="getElementById('display').style.backgroundColor = 'black'">off</button>
+         <button onclick="getElementById('display').style.backgroundColor = 'white'">on</button>
+      </div>
+
+       </div class="footer">
+     <span style="color: #ffffff; margin-top: 15px; font-size: 12px;">Decimal places - F (change)</span>
+     <span style="color: #ffffff; margin-left: 150px; margin-top: 15px; font-size: 12px;">PC/Mobile</span>
+      </div>
+
+     </div>
+    </div>
+
+  <script>
+    const display = document.getElementById('display');
+    function appendToDisplay(input) {
+      display.value += input;
+    }
+
+    function clearDisplay() {
+      display.value = "";
+    }
+
+    function deleteList() {
+      display.value = display.value.slice(0,-1);
+    }
+
+    function calculate() {
+      display.value = eval(display.value);
+    }
+
+  </script>
+</body>
+</html>
